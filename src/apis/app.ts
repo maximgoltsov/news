@@ -1,6 +1,7 @@
 import AppStore from "../store/app";
 import INews from "../types/news";
 import NewsApi, { NewsApiParams } from "./news";
+import UserApi from "./user";
 
 export default class AppApi {
   getData = (params: NewsApiParams) => {
@@ -9,10 +10,15 @@ export default class AppApi {
     if(params.author && params.author !== "") res = res.filter(x => x.author === params.author);
     return res;
   } 
+  getFakeUser = (login: string, password: string) => {
+    return true;
+  }
 
   news: NewsApi;
+  user: UserApi;
   constructor(store: AppStore){
     this.news = new NewsApi(this, store);
+    this.user = new UserApi(this, store);
   }
 }
 

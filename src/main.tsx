@@ -19,6 +19,7 @@ const api = new AppApi(store);
 ReactDOM.render(
   <React.StrictMode>
     <AppContext.Provider value={{ store, api }}>
+
       <Router history={history}>
         <App />
       </Router>

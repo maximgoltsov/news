@@ -13,7 +13,6 @@ export default class NewsApi {
   constructor(private api: AppApi, private store: AppStore){}
     getAll(params: NewsApiParams) {
       const data = this.api.getData(params);
-      console.log(data, params);
       this.store.news.load(data);
     }
 }

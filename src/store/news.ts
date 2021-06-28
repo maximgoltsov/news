@@ -10,7 +10,6 @@ export default class NewsStore {
   }
   @action load(news: INews[]) {
     this.byId.clear();
-    console.log(news);
     news.forEach((x) => this.byId.set(x.id, new News(this.store, x)));
   }
   @computed get all() {
