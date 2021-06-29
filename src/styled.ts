@@ -7,4 +7,5 @@ export const StyledApp = styled.div`
 
 export const StyledAppContent = styled.div`
   flex-grow: 1;
+  padding: 10px 20px;
 `;

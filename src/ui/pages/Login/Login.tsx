@@ -2,6 +2,7 @@ import React, { FormEvent, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useAppContext } from "../../../app-context";
 import { newsUrl } from "../../../constants/routes";
+import { StyledFormInput, StyledLoginForm, StyledLoginFormContainer } from "./styled";
 
 const LoginPage: React.FC = () => {
   const { api } = useAppContext();
@@ -20,25 +21,23 @@ const LoginPage: React.FC = () => {
     }
   }
 
-  return (<div style={{ textAlign: "center" }}>
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label>
-          Login:
+  return (
+    <StyledLoginFormContainer>
+      <StyledLoginForm onSubmit={handleSubmit}>
+        <StyledFormInput>
+          <div>Login</div>
           <input value={login} onChange={(e) => setLogin(e.target.value)} type="text" name="name" />
-        </label>
-      </div>
-      <div>
-        <label>
-          Password:
+        </StyledFormInput>
+        <StyledFormInput>
+          <div>Password</div>
           <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" name="password" />
-        </label>
-      </div>
-      <div>
-        <button type="submit">Submit</button>
-      </div>
-    </form>
-  </div>);
+        </StyledFormInput>
+        <div>
+          <button type="submit">Submit</button>
+        </div>
+      </StyledLoginForm>
+    </StyledLoginFormContainer>
+  );
 }
 
 export default LoginPage;
