@@ -30,6 +30,11 @@ export const StyledPagginatorContainer = styled.div`
       background-color: black;
       color: white;
     }
+    
+    &.selected {
+      background-color: black;
+      color: white;
+    }
   }
 `;
 

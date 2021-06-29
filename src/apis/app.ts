@@ -4,11 +4,11 @@ import NewsApi, { NewsApiParams } from "./news";
 import UserApi from "./user";
 
 export default class AppApi {
-  getData = (params: NewsApiParams) => {
+  getFakeData = (params: NewsApiParams) => {
     let res = [...data];
     if(params.category !== "") res = res.filter(x => x.category === params.category);
     if(params.author && params.author !== "") res = res.filter(x => x.author === params.author);
-    return res;
+    return {res, count: 22};
   } 
   getFakeUser = (login: string, password: string) => {
     return true;

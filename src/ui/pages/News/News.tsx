@@ -15,7 +15,6 @@ const NewsPage: React.FC = () => {
   const order = new URLSearchParams(search).get('order');
 
   const { author, page } = useParams<{ author: string, page: string }>();
-
   const [selectedSort, setSelectedSort] = useState<string>(order ?? "asc");
   const [selectedCategory, setSelectedCategory] = useState<string>(category ?? "");
   const [selectedAuthor, setSelectedAuthor] = useState<string>(author ?? "");
@@ -95,10 +94,19 @@ const NewsPage: React.FC = () => {
           <div>Дата: {x.date}</div>
         </StyledNewsListItem>)}
     </StyledNewsList>
-    <StyledPagginatorContainer>
-      {[1, 2, 3].map(x => <button onClick={() => handlePaggination(x)}>{x}</button>)}
-    </StyledPagginatorContainer>
+    <Paggination handlePaggination={handlePaggination} current={page && page !== "" ? Number(page) : 1} />
   </div>);
 }
+
+const Paggination: React.FC<{ handlePaggination: (x: number) => void, current: number }> = observer(({ handlePaggination, current }) => {
+  const { store } = useAppContext();
+  const maxItem = 4;
+  const countPages = Math.floor(store.news.getCount / maxItem);
+
+  return (
+    <StyledPagginatorContainer>
+      {Array.from(Array(countPages).keys()).map(x => <button className={`${x + 1 === current ? 'selected' : ''}`} onClick={() => handlePaggination(x + 1)}>{x + 1}</button>)}
+    </StyledPagginatorContainer>);
+});
 
 export default observer(NewsPage);

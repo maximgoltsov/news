@@ -32,7 +32,7 @@ const LoginPage: React.FC = () => {
           <div>Password</div>
           <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" name="password" />
         </StyledFormInput>
-        <div>
+        <div style={{ textAlign: 'center' }}>
           <button type="submit">Submit</button>
         </div>
       </StyledLoginForm>

@@ -5,6 +5,10 @@ export const StyledSideBar = styled.div`
   background-color: antiquewhite;
   padding: 10px 0;
   text-align: center;
+
+  @media(max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 export const StylesBarList = styled.div`

@@ -12,8 +12,9 @@ export type NewsApiParams = {
 export default class NewsApi {
   constructor(private api: AppApi, private store: AppStore){}
     getAll(params: NewsApiParams) {
-      const data = this.api.getData(params);
-      this.store.news.load(data);
+      const {res, count} = this.api.getFakeData(params);
+      this.store.news.load(res);
+      this.store.news.setCount(count);
     }
 }
 
